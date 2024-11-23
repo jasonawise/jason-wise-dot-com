@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 export default async function Page() {
   const mostRecentPost = await getMostRecentPost();
 
-  console.log("mostRecentPost", mostRecentPost);
   return (
     <div>
       <Link href={`/posts/${mostRecentPost.slug}`}>
