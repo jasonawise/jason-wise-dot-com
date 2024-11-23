@@ -1,7 +1,7 @@
 import { Post } from "@/app/types/posts";
 import { readdir } from "fs/promises";
 
-export async function getPosts(): Promise<Post[]> {
+export async function getAllPosts(): Promise<Post[]> {
   const slugs = (
     await readdir("./src/app/posts", { withFileTypes: true })
   ).filter((dirent) => dirent.isDirectory());

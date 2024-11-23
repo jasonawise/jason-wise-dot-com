@@ -1,4 +1,7 @@
+import { getMostRecentPost } from "@/lib/getMostRecentPost";
 import { Metadata } from "next";
+import Link from "next/link";
+import Card from "./components/Card/Card";
 
 export const metadata: Metadata = {
   title: "Jason A. Wise",
@@ -6,9 +9,14 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
+  const mostRecentPost = await getMostRecentPost();
+
+  console.log("mostRecentPost", mostRecentPost);
   return (
     <div>
-      <h1>Welcome!</h1>
+      <Link href={`/posts/${mostRecentPost.slug}`}>
+        <Card>{mostRecentPost.title}</Card>
+      </Link>
     </div>
   );
 }
