@@ -1,9 +1,14 @@
 import { getAllPosts } from "@/lib/getAllPosts";
 import { Post } from "../types/posts";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function Page() {
   const allPosts: Post[] = await getAllPosts();
+
+  if (process.env.NODE_ENV === "production") {
+    return redirect("/"); // Or redirect, or show a 404
+  }
 
   return (
     <div>

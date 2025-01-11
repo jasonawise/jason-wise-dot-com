@@ -9,7 +9,7 @@ export const siteConfig = {
     {
       name: "Posts",
       path: "/posts",
-      showInNav: true,
+      showInNav: false,
     },
     {
       name: "Uses",
