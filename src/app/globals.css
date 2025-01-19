@@ -23,3 +23,7 @@ body {
 h1 {
   @apply text-2xl;
 }
+
+article p {
+  @apply text-base font-extralight mb-2;
+}

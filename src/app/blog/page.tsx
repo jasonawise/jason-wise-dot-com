@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/mdx";
+import formatDate from "@/lib/helpers/formatDate";
 
 export default async function Blog() {
   const posts = getAllPosts();
@@ -10,7 +11,12 @@ export default async function Blog() {
       <ul>
         {posts.map(({ slug, frontmatter }) => (
           <li key={slug}>
-            <Link href={`/blog/${slug}`}>{frontmatter.title}</Link>
+            <Link href={`/blog/${slug}`}>
+              <p className="text-base font-semibold">{frontmatter.title}</p>
+              <p className="text-xs font-light">
+                {formatDate(frontmatter.date)}
+              </p>
+            </Link>
           </li>
         ))}
       </ul>

@@ -10,9 +10,8 @@ export default async function BlogPost({ params }) {
 
   return (
     <article>
-      <h1>{frontmatter.title}</h1>
-      <p>{formatDate(frontmatter.date)}</p>
       <MDXRemote source={content} />
+      <p>{formatDate(frontmatter.date)}</p>
     </article>
   );
 }
