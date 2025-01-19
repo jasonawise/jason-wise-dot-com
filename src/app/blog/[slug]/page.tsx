@@ -3,7 +3,7 @@ import { getPostBySlug, getPostSlugs } from "@/lib/mdx";
 
 // Explicitly type the expected structure of params
 export default async function BlogPost({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const { frontmatter, content } = getPostBySlug(slug);
 
