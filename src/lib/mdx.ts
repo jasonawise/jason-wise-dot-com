@@ -22,3 +22,16 @@ export const getAllPosts = () => {
   const slugs = getPostSlugs();
   return slugs.map((slug) => getPostBySlug(slug));
 };
+
+export const getLatestPost = () => {
+  const posts = getAllPosts();
+  if (posts.length === 0) return null;
+
+  posts.sort((a, b) => {
+    const dateA = new Date(a.frontmatter.date);
+    const dateB = new Date(b.frontmatter.date);
+    return dateB.getTime() - dateA.getTime();
+  });
+
+  return posts[0];
+};

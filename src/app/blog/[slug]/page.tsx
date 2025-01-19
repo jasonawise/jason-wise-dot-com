@@ -1,5 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getPostSlugs } from "@/lib/mdx";
+import formatDate from "@/lib/helpers/formatDate";
 
 // Explicitly type the expected structure of params
 export default async function BlogPost({ params }) {
@@ -10,7 +11,7 @@ export default async function BlogPost({ params }) {
   return (
     <article>
       <h1>{frontmatter.title}</h1>
-      <p>{frontmatter.date}</p>
+      <p>{formatDate(frontmatter.date)}</p>
       <MDXRemote source={content} />
     </article>
   );
