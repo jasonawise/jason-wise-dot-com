@@ -1,20 +1,27 @@
-import NavBar from "./components/NavBar/NavBar";
 import { jetBrainsMono, quickSand } from "./fonts";
 import "./globals.css";
+import NavContent from "./ui/nav/navContent";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navCss =
+    "mr-4 mb-2 cursor-pointer hover:font-bold hover:border-l-2 hover:pl-2 flex";
   return (
     <html
       lang="en"
       className={`${jetBrainsMono.className} ${quickSand.variable}`}
     >
-      <body>
-        <NavBar />
-        <section className="px-8">{children}</section>
+      <body className="p-8">
+        <div className="flex h-screen">
+          <div className="w-1/4 border-r border-gray-200">
+            <h1 className="mb-8">Jason A. Wise</h1>
+            <NavContent navCss={navCss} />
+          </div>
+          <div className="w-3/4 pl-4">{children}</div>
+        </div>
       </body>
     </html>
   );
