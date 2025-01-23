@@ -14,11 +14,12 @@ export default async function Page() {
 
   return (
     <div>
-      <h2>Latest Post</h2>
+      <h2 className="mb-2">Latest Post</h2>
       <Link href={`/blog/${slug}`}>
         <Card>
           <h2 className="text-base">{frontmatter.title}</h2>
           <p className="text-xs">{frontmatter.date}</p>
+          <p className="text-sm">{frontmatter.summary}</p>
         </Card>
       </Link>
     </div>
