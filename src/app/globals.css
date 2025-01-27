@@ -17,5 +17,16 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-family: var(--font-quicksand);
+}
+
+h1 {
+  @apply text-2xl;
+}
+
+article p {
+  @apply text-base font-extralight mb-2;
 }

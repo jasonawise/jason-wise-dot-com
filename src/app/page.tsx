@@ -1,20 +1,29 @@
-import { getPosts } from "@/lib/api";
+import { getLatestPost } from "@/lib/mdx";
+import { Metadata } from "next";
 import Link from "next/link";
+import Card from "./components/Card/Card";
+import Banner from "./ui/banner";
 
-export default async function Home() {
-  const posts = await getPosts();
+export const metadata: Metadata = {
+  title: "Jason A. Wise",
+  description: "...",
+};
 
-  console.log(posts);
-  if (!posts) return <p>no posts</p>;
+export default async function Page() {
+  const latestPost = await getLatestPost();
+  const { slug, frontmatter } = latestPost;
+
   return (
     <div>
-      {posts?.map((post) => {
-        return (
-          <Link key={post.slug} href={`posts/${post.slug}`}>
-            {post.title}{" "}
-          </Link>
-        );
-      })}
+      <Banner />
+      <h2 className="mb-2">Latest Post</h2>
+      <Link href={`/blog/${slug}`}>
+        <Card>
+          <h2 className="text-base">{frontmatter.title}</h2>
+          <p className="text-xs">{frontmatter.date}</p>
+          <p className="text-sm">{frontmatter.summary}</p>
+        </Card>
+      </Link>
     </div>
   );
 }
